@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component immediate="true" name="com.adobe.cq.social.translation.impl.UGCLanguageDetector">
+        <implementation class="com.adobe.cq.social.translation.impl.UGCLanguageDetector"/>
+        <service servicefactory="false">
+            <provide interface="org.osgi.service.event.EventHandler"/>
+        </service>
+        <property name="event.topics" value="com/adobe/cq/social/*"/>
+        <property name="event.filter" value="(path=/content/usergenerated/*)"/>
+        <property name="service.description" value="A listener detect the language when user generated content has been created or saved."/>
+        <property name="translate.listener.type">
+            social/commons/components/comments/comment jcr:description
+        </property>
+        <property name="translate.property.list">
+            social/commons/components/comments/comment jcr:description
+            social/commons/components/comments/comment jcr:title
+        </property>
+        <property name="poolSize" type="Integer" value="5"/>
+        <property name="maxPoolSize" type="Integer" value="10"/>
+        <property name="queueSize" type="Integer" value="50"/>
+        <property name="keepAliveTime" type="Long" value="1"/>
+        <property name="service.vendor" value="Adobe Systems Incorporated"/>
+        <property name="service.pid" value="com.adobe.cq.social.translation.impl.UGCLanguageDetector"/>
+        <reference name="repository" interface="org.apache.sling.jcr.api.SlingRepository" cardinality="1..1" policy="static" bind="bindRepository" unbind="unbindRepository"/>
+        <reference name="translationManager" interface="com.adobe.granite.translation.api.TranslationManager" cardinality="1..1" policy="static" bind="bindTranslationManager" unbind="unbindTranslationManager"/>
+        <reference name="replicator" interface="com.adobe.cq.social.ugcbase.AsyncReverseReplicator" cardinality="1..1" policy="static" bind="bindReplicator" unbind="unbindReplicator"/>
+        <reference name="translationSaveQueue" interface="com.adobe.cq.social.ugcbase.TranslationSaveQueue" cardinality="1..1" policy="static" bind="bindTranslationSaveQueue" unbind="unbindTranslationSaveQueue"/>
+        <reference name="discoveryService" interface="org.apache.sling.discovery.DiscoveryService" cardinality="1..1" policy="static" bind="bindDiscoveryService" unbind="unbindDiscoveryService"/>
+        <reference name="settingsService" interface="org.apache.sling.settings.SlingSettingsService" cardinality="1..1" policy="static" bind="bindSettingsService" unbind="unbindSettingsService"/>
+        <reference name="resourceResolverFactory" interface="org.apache.sling.api.resource.ResourceResolverFactory" cardinality="1..1" policy="static" bind="bindResourceResolverFactory" unbind="unbindResourceResolverFactory"/>
+    </scr:component>
+</components>

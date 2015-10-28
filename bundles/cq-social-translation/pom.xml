@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ ADOBE CONFIDENTIAL
+ __________________
+
+  Copyright 2014 Adobe Systems Incorporated
+  All Rights Reserved.
+
+ NOTICE:  All information contained herein is, and remains
+ the property of Adobe Systems Incorporated and its suppliers,
+ if any.  The intellectual and technical concepts contained
+ herein are proprietary to Adobe Systems Incorporated and its
+ suppliers and are protected by trade secret or copyright law.
+ Dissemination of this information or reproduction of this material
+ is strictly forbidden unless prior written permission is obtained
+ from Adobe Systems Incorporated.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- ====================================================================== -->
+    <!-- P A R E N T   P R O J E C T   D E S C R I P T I O N                    -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>com.adobe.cq.social</groupId>
+        <artifactId>socialcommunities-parent</artifactId>
+        <version>1.1.55</version>
+        <relativePath />
+    </parent>
+
+    <!-- ====================================================================== -->
+    <!-- P R O J E C T    D E S C R I P T I O N                                 -->
+    <!-- ====================================================================== -->
+    <groupId>com.adobe.cq.social</groupId>
+    <artifactId>cq-social-translation</artifactId>
+    <packaging>bundle</packaging>
+    <version>1.2.3-SNAPSHOT</version>
+    <name>AEM Communities Translation - Bundle</name>
+
+    <scm>
+        <connection>scm:git:git@git.corp.adobe.com:CQ/social-translation.git</connection>
+        <developerConnection>scm:git:git@git.corp.adobe.com:CQ/social-translation.git</developerConnection>
+        <url>https://git.corp.adobe.com/CQ/social-translation/tree/master/bundles/cq-social-translation</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <!-- ====================================================================== -->
+    <!-- B U I L D                                                              -->
+    <!-- ====================================================================== -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.sling</groupId>
+                <artifactId>maven-sling-plugin</artifactId>
+                <configuration>
+                    <slingUrlSuffix>/libs/social/translation/install/</slingUrlSuffix>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-Category>social</Bundle-Category>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- The release profile builds a source jar containing only the public classes, for javadocs -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>jar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <forceCreation>true</forceCreation>
+                                    <includes>
+                                        <include>nothing/*.java</include> <!-- intentionally none-->
+                                    </includes>
+                                    <excludes>
+                                        <exclude>**/impl/**</exclude>
+                                    </excludes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- The release profile builds a jar containing only the public classes, for the api jar -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>api-jar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>public-api</classifier>
+                                    <includes>
+                                        <include>nothing/*.java</include> <!-- intentionally none-->
+                                    </includes>
+                                    <excludes>
+                                        <exclude>**/impl/**</exclude>
+                                    </excludes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>static-analysis</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <!-- ====================================================================== -->
+    <!-- D E P E N D E N C I E S                                                -->
+    <!-- ====================================================================== -->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.event</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.day.cq</groupId>
+            <artifactId>cq-commons</artifactId>
+            <version>5.6.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.api</artifactId>
+            <version>2.7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.commons.osgi</artifactId>
+            <version>2.0.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.jcr.resource</artifactId>
+            <version>2.1.0</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>org.apache.sling.jcr.api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.jcr.api</artifactId>
+            <version>2.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.commons.scheduler</artifactId>
+            <scope>provided</scope>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.tenant</artifactId>
+            <version>1.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.day.cq</groupId>
+            <artifactId>cq-search</artifactId>
+            <version>5.3.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.day.cq</groupId>
+            <artifactId>cq-tagging</artifactId>
+            <version>5.5.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.day.cq.wcm</groupId>
+            <artifactId>cq-wcm-api</artifactId>
+            <version>5.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.day.cq.wcm</groupId>
+            <artifactId>cq-wcm-webservice-support</artifactId>
+            <version>5.6.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20080701</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.translation.api</artifactId>
+            <version>1.1.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.xssprotection</artifactId>
+            <version>5.5.58</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.cq.social</groupId>
+            <artifactId>cq-social-ugcbase-api</artifactId>
+            <version>2.1.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.cq.social</groupId>
+            <artifactId>cq-social-scf-api</artifactId>
+            <version>1.0.7</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.discovery.api</artifactId>
+            <version>0.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.settings</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.translation.connector.msft.core</artifactId>
+            <version>1.0.20</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.security.user</artifactId>
+            <version>0.1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-api</artifactId>
+            <version>2.5.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.translation.core</artifactId>
+            <version>1.0.22</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.replication.core</artifactId>
+            <version>5.5.44</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.granite</groupId>
+            <artifactId>com.adobe.granite.comments</artifactId>
+            <version>1.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

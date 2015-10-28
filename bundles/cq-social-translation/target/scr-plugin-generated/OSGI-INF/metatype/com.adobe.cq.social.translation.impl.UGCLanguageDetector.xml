@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/metatype">
+    <OCD id="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager" name="AEM Communities Translation Configuration Manager" description="%com.adobe.cq.social.translation.impl.TranslationServiceConfigManager.description">
+        <AD id="translate.language" type="String" default="en,fr,de,ja,it,es,pt,zh_CN,zh_TW,ko" name="Enabled Languages" description="%translate.language.description" cardinality="2147483647">
+            <Option value="ar" label="Arabic"/>
+            <Option value="bg" label="Bulgarian"/>
+            <Option value="zh_CN" label="Simplified Chinese"/>
+            <Option value="zh_TW" label="Traditional Chinese"/>
+            <Option value="cs" label="Czech"/>
+            <Option value="da" label="Danish"/>
+            <Option value="nl" label="Dutch"/>
+            <Option value="en" label="English"/>
+            <Option value="et" label="Estonian"/>
+            <Option value="fi" label="Finnish"/>
+            <Option value="fr" label="French"/>
+            <Option value="de" label="German"/>
+            <Option value="el" label="Greek"/>
+            <Option value="ht" label="Haitian Creole"/>
+            <Option value="he" label="Hebrew"/>
+            <Option value="hu" label="Hungarian"/>
+            <Option value="id" label="Indonesian"/>
+            <Option value="it" label="Italian"/>
+            <Option value="ja" label="Japanese"/>
+            <Option value="ko" label="Korean"/>
+            <Option value="lv" label="Latvian"/>
+            <Option value="lt" label="Lithuanian"/>
+            <Option value="no" label="Norwegian"/>
+            <Option value="pl" label="Polish"/>
+            <Option value="pt" label="Portuguese"/>
+            <Option value="ro" label="Romanian"/>
+            <Option value="ru" label="Russian"/>
+            <Option value="sk" label="Slovak"/>
+            <Option value="sl" label="Slovenian"/>
+            <Option value="es" label="Spanish"/>
+            <Option value="sv" label="Swedish"/>
+            <Option value="th" label="Thai"/>
+            <Option value="tr" label="Turkish"/>
+            <Option value="uk" label="Ukrainian"/>
+            <Option value="vi" label="Vietnamese"/>
+        </AD>
+        <AD id="translate.display" type="String" default="replace" name="Select Display Options" description="%translate.display.description">
+            <Option value="replace" label="Replace source content with the target translation"/>
+            <Option value="side" label="Show target translation side by side with source content"/>
+        </AD>
+        <AD id="translate.attribution" type="Boolean" default="true" name="Attribution" description="Append translation service provider attribution to translated result. Attribution text is editable in the Cloud Service configuration page."/>
+        <AD id="translate.caching" type="String" default="cache_when_call" name="Select Persistence Options" description="%translate.caching.description">
+            <Option value="cache_when_call" label="Translate contributions on user request and persist afterwards"/>
+            <Option value="no_caching" label="Don't persist translations."/>
+            <Option value="cache_when_post" label="Automatically translate new contributions and persist the new translations"/>
+        </AD>
+        <AD id="translate.caching.duration" type="String" default="0" name="Set Machine Translation Refresh Interval" description="Refresh translation after designated interval (number of months). Enter 0 to disable this feature."/>
+        <AD id="translate.session.save.interval" type="String" default="2" name="Set Machine Translation session save interval" description="Force session save after designated interval (number of seconds). Enter 0 to disable batch writing"/>
+        <AD id="translate.session.save.batchLimit" type="String" default="250" name="Set Machine Translation Save Queue batching limit" description="If the session save interval is 0, then this value is irrelevant"/>
+        <AD id="translate.smart.rendering" type="Boolean" default="false" name="Smart Rendering" description="Always show contributions in user’s preferred language."/>
+    </OCD>
+    <Designate pid="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager">
+        <Object ocdref="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager"/>
+    </Designate>
+    <OCD id="com.adobe.cq.social.translation.impl.UGCLanguageDetector" name="AEM Communities UGC Language Detector" description="UGC Language Detector">
+        <AD id="event.topics" type="String" default="com/adobe/cq/social/*" name="%event.topics.name" description="%event.topics.description"/>
+        <AD id="event.filter" type="String" default="(path=/content/usergenerated/*)" name="%event.filter.name" description="%event.filter.description"/>
+        <AD id="translate.listener.type" type="String" default="social/commons/components/comments/comment jcr:description" name="Resource and property types to listen for" description="Enter the sling:resourceType and primary property used to determine the language of the content (space delimited). Only one property per resource type." cardinality="100"/>
+        <AD id="translate.property.list" type="String" default="social/commons/components/comments/comment jcr:description,social/commons/components/comments/comment jcr:title" name="Resource and property types to translate by default" description="Enter the sling:resourceType and property to translate (space delimited)." cardinality="100"/>
+        <AD id="poolSize" type="Integer" default="5" name="%poolSize.name" description="%poolSize.description"/>
+        <AD id="maxPoolSize" type="Integer" default="10" name="%maxPoolSize.name" description="%maxPoolSize.description"/>
+        <AD id="queueSize" type="Integer" default="50" name="%queueSize.name" description="%queueSize.description"/>
+        <AD id="keepAliveTime" type="Long" default="1" name="%keepAliveTime.name" description="%keepAliveTime.description"/>
+    </OCD>
+    <Designate pid="com.adobe.cq.social.translation.impl.UGCLanguageDetector">
+        <Object ocdref="com.adobe.cq.social.translation.impl.UGCLanguageDetector"/>
+    </Designate>
+</metatype:MetaData>

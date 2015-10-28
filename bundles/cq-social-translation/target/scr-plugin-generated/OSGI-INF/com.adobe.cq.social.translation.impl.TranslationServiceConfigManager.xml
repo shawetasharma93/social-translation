@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component enabled="true" immediate="true" name="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager">
+        <implementation class="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager"/>
+        <service servicefactory="false">
+            <provide interface="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager"/>
+        </service>
+        <property name="translate.language">
+            en
+            fr
+            de
+            ja
+            it
+            es
+            pt
+            zh_CN
+            zh_TW
+            ko
+        </property>
+        <property name="translate.display" value="replace"/>
+        <property name="translate.attribution" type="Boolean" value="true"/>
+        <property name="translate.caching" value="cache_when_call"/>
+        <property name="translate.caching.duration" value="0"/>
+        <property name="translate.session.save.interval" value="2"/>
+        <property name="translate.session.save.batchLimit" value="250"/>
+        <property name="translate.smart.rendering" type="Boolean" value="false"/>
+        <property name="service.vendor" value="Adobe Systems Incorporated"/>
+        <property name="service.pid" value="com.adobe.cq.social.translation.impl.TranslationServiceConfigManager"/>
+    </scr:component>
+</components>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ ADOBE CONFIDENTIAL
+ __________________
+
+  Copyright 2014 Adobe Systems Incorporated
+  All Rights Reserved.
+
+ NOTICE:  All information contained herein is, and remains
+ the property of Adobe Systems Incorporated and its suppliers,
+ if any.  The intellectual and technical concepts contained
+ herein are proprietary to Adobe Systems Incorporated and its
+ suppliers and are protected by trade secret or copyright law.
+ Dissemination of this information or reproduction of this material
+ is strictly forbidden unless prior written permission is obtained
+ from Adobe Systems Incorporated.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent Project -->
+    <parent>
+		    <artifactId>social-it-automation-parent</artifactId>
+		    <groupId>com.adobe.cq.social.test</groupId>
+		    <version>1.1.15</version>
+        <relativePath />
+    </parent>
+
+    <!-- SVN Settings -->
+    <scm>
+        <connection>scm:git:git@git.corp.adobe.com:CQ/social-translation.git</connection>
+        <developerConnection>scm:git:git@git.corp.adobe.com:CQ/social-translation.git</developerConnection>
+        <url>https://git.corp.adobe.com/CQ/social-translation/it/http</url>
+      <tag>HEAD</tag>
+  </scm>
+
+    <!-- Project Definition -->
+    <groupId>com.adobe.cq.integrationtests</groupId>
+    <artifactId>cq-social-translation-it</artifactId>
+    <version>1.6.5-SNAPSHOT</version>
+    <name>AEM Communities Translation - Integration Tests</name>
+      <build>
+          <plugins>
+              <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-surefire-plugin</artifactId>
+                  <configuration>
+                      <skip>true</skip>
+                  </configuration>
+              </plugin>
+              <plugin>
+              	<groupId>org.apache.maven.plugins</groupId>
+              	<artifactId>maven-assembly-plugin</artifactId>
+              </plugin> 
+              <plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+            <plugin>
+    			<groupId>org.codehaus.mojo</groupId>
+   				<artifactId>buildnumber-maven-plugin</artifactId>
+   			</plugin>
+			      
+            </plugins>
+       </build>
+       <dependencies>
+            <dependency>
+            <groupId>com.adobe.cq.integrationtests</groupId>
+                <artifactId>cq-social-commons-it</artifactId>
+                <version>1.6.4</version>
+                <classifier>integrationtest</classifier>
+            </dependency>
+        <dependency>
+            <groupId>com.adobe.cq.social.test</groupId>
+            <artifactId>social-it-framework</artifactId>
+            <version>1.1.112</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.qe</groupId>
+            <artifactId>it-framework</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+       </dependencies>
+</project>

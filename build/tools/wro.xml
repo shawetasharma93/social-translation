@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ ADOBE CONFIDENTIAL
+ __________________
+
+  Copyright 2013 Adobe Systems Incorporated
+  All Rights Reserved.
+
+ NOTICE:  All information contained herein is, and remains
+ the property of Adobe Systems Incorporated and its suppliers,
+ if any.  The intellectual and technical concepts contained
+ herein are proprietary to Adobe Systems Incorporated and its
+ suppliers and are protected by trade secret or copyright law.
+ Dissemination of this information or reproduction of this material
+ is strictly forbidden unless prior written permission is obtained
+ from Adobe Systems Incorporated.
+
+-->
+<groups xmlns="http://www.isdc.ro/wro">
+  <group name="all">
+    <css>/libs/social/commons/**.css</css>
+    <js>/libs/social/commons/**.js</js>
+    <css>/etc/clientlibs/social/comments/**.css</css>
+    <js>/etc/clientlibs/social/comments/**.js</js>
+    <css>/etc/clientlibs/social/commons/comments/**.css</css>
+    <js>/etc/clientlibs/social/commons/comments/**.js</js>
+    <css>/etc/clientlibs/social/commons/composer/**.css</css>
+    <js>/etc/clientlibs/social/commons/composer/**.js</js>
+    <css>/etc/clientlibs/social/commons/tagging/**.css</css>
+    <js>/etc/clientlibs/social/commons/tagging/**.js</js>
+    <css>/etc/clientlibs/social/commons/toggle/**.css</css>
+    <js>/etc/clientlibs/social/commons/toggle/**.js</js>
+  </group>
+</groups>

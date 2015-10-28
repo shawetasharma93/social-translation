@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>AEM Communities Translation - Package</comment>
+<entry key="createdBy">Adobe</entry>
+<entry key="name">cq-social-translation-pkg</entry>
+<entry key="acHandling">overwrite</entry>
+<entry key="created">2015-08-26T10:57:43.715+0530</entry>
+<entry key="groupId">com.adobe.cq.social</entry>
+<entry key="version">1.2.3-SNAPSHOT</entry>
+<entry key="requiresRoot">true</entry>
+<entry key="description">AEM Communities Translation - Package</entry>
+<entry key="group">day/cq561/social/translation</entry>
+<entry key="artifactId">cq-social-translation-pkg</entry>
+<entry key="path">/etc/packages/day/cq561/social/translation/cq-social-translation-pkg.zip</entry>
+</properties>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component name="com.adobe.cq.social.translation.impl.ContentUpdaterServlet">
+        <implementation class="com.adobe.cq.social.translation.impl.ContentUpdaterServlet"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Servlet"/>
+        </service>
+        <property name="sling.servlet.paths">
+            /bin/contentUpdaterService
+        </property>
+        <property name="sling.servlet.methods">
+            GET
+            POST
+        </property>
+        <property name="service.vendor" value="Adobe Systems Incorporated"/>
+        <property name="service.pid" value="com.adobe.cq.social.translation.impl.ContentUpdaterServlet"/>
+        <reference name="contentUpdaterService" interface="com.adobe.cq.social.translation.ContentUpdaterService" cardinality="1..1" policy="static" bind="bindContentUpdaterService" unbind="unbindContentUpdaterService"/>
+    </scr:component>
+</components>

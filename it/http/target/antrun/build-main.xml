@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath"/>
+  <echo file="C:\development\social-translation\it\http/target/gitsha-info.txt">cq-social-translation-it-git-sha : ${buildNumber}</echo>
+</target>
+</project>

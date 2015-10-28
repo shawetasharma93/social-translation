@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.6">
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\LanguageDataSet.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\MachineTranslationConsoleControl.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\RandomI18NString.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\SoCoMTCompleteTestIT.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\SoCoMTSmokeTestIT.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\SoCoMTTranslationBaseIT.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\SoCoTestMT.java">
+</file>
+<file name="C:\development\social-translation\it\http\src\test\java\com\adobe\soco\integrationtest\translation\TranslationCloudConfig.java">
+</file>
+</checkstyle>

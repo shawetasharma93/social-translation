@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+  <local-check-config name="SoCo Dev Checks" location="/social-build-tools/src/main/resources/checkstyle/developer.xml" type="project" description="">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <local-check-config name="SoCo Java Checks" location="/social-build-tools/src/main/resources/checkstyle/java.xml" type="project" description="">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <local-check-config name="SoCo JSP Checks" location="/social-build-tools/src/main/resources/checkstyle/jsp.xml" type="project" description="">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <local-check-config name="SoCo XML Checks" location="/social-build-tools/src/main/resources/checkstyle/xml.xml" type="project" description="">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <local-check-config name="SoCo HBS Checks" location="/social-build-tools/src/main/resources/checkstyle/hbs.xml" type="project" description="">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <fileset name="all" enabled="true" check-config-name="SoCo Dev Checks" local="true">
+    <file-match-pattern match-pattern="." include-pattern="true"/>
+    <file-match-pattern match-pattern=".*bin/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern=".*target/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern=".*\.content.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern=".*/filter.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern=".*/settings.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern=".settings/*" include-pattern="false"/>
+    <file-match-pattern match-pattern="components/.*/.*dialog\.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern="components/.*/_cq_.*\.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern="components/.*/tab.*\.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern="components/.*/dialog/.*\.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern="components/.*/processargs\.xml" include-pattern="false"/>
+  </fileset>
+  <fileset name="Java" enabled="true" check-config-name="SoCo Java Checks" local="true">
+    <file-match-pattern match-pattern=".java$" include-pattern="true"/>
+    <file-match-pattern match-pattern=".js$" include-pattern="true"/>
+    <file-match-pattern match-pattern=".ecma$" include-pattern="true"/>
+    <file-match-pattern match-pattern="target/.*" include-pattern="false"/>
+  </fileset>
+  <fileset name="JSP" enabled="true" check-config-name="SoCo JSP Checks" local="true">
+    <file-match-pattern match-pattern=".jsp$" include-pattern="true"/>
+    <file-match-pattern match-pattern="target/.*" include-pattern="false"/>
+  </fileset>
+  <fileset name="XML" enabled="true" check-config-name="SoCo XML Checks" local="true">
+    <file-match-pattern match-pattern=".xml$" include-pattern="true"/>
+    <file-match-pattern match-pattern="target/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern="META-INF/.*" include-pattern="false"/>
+    <file-match-pattern match-pattern=".content.xml$" include-pattern="false"/>
+    <file-match-pattern match-pattern="_cq_.*\.xml$" include-pattern="false"/>
+    <file-match-pattern match-pattern="processargs.xml$" include-pattern="false"/>
+    <file-match-pattern match-pattern="dialog.*\.xml$" include-pattern="false"/>
+    <file-match-pattern match-pattern="/dialog/.*\.xml" include-pattern="false"/>
+    <file-match-pattern match-pattern="tab.*.xml$" include-pattern="false"/>
+    <file-match-pattern match-pattern="jcr_root/etc/workflow/models/.*/model.xml" include-pattern="false"/>
+  </fileset>
+  <fileset name="HBS" enabled="true" check-config-name="SoCo HBS Checks" local="true">
+    <file-match-pattern match-pattern=".hbs$" include-pattern="true"/>
+    <file-match-pattern match-pattern="target/.*" include-pattern="false"/>
+  </fileset>
+  <filter name="NonSrcDirs" enabled="false"/>
+</fileset-config>

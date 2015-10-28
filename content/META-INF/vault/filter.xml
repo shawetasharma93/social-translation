@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/libs/social/translation/" />
+    <filter root="/etc/clientlibs/social/translation"/>
+    <filter root="/etc/social/config/languageOpts"/>
+    <filter root="/etc/social/config/rep:policy"/>
+</workspaceFilter>
